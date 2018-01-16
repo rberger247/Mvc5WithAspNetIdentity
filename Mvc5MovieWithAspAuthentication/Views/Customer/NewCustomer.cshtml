@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "NewCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Mvc5MovieWithAspAuthentication.Models.Customer>
+@using GridMvc.Html
+<h2>NewCustomer</h2>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Name).Titled("Name").Filterable(true);
+ 
+    columns.Add(c => c.BirthDate).Titled("Birth Date").Css("code-cut");
+    columns.Add(c => c.IsSubscribedToNewsletter).Titled(" Is Subscribed").Filterable(true);
+    //columns.Add().Encoded(false)
+    //    .Sanitized(false).Css("table-hover")
+    //    .SetWidth(30).RenderValueAs(o => @Html.ActionLink("Edit", "Edit", new { Customerid = o.CustomerId }));
+
+
+
+}).WithPaging(3).Sortable(true)
